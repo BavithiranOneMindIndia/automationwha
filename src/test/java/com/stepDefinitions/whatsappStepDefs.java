@@ -1,7 +1,7 @@
 package com.stepDefinitions;
 
 import java.util.concurrent.TimeUnit;
-
+import java.awt.AWTException;
 import java.io.IOException;
 import com.whatsapp.mainPageForWhatsappGetGroups;
 
@@ -41,6 +41,12 @@ public class whatsappStepDefs extends mainPageForWhatsappGetGroups {
 
         driver.getWindowHandle();
         driver.manage().window().maximize();
+    }
+
+    @Then("^Get Group Names$")
+    public void get_Group_Names() throws IOException, InterruptedException, AWTException{
+        clickSearchField(driver);
+        getChatNames(driver);
     }
 
 }

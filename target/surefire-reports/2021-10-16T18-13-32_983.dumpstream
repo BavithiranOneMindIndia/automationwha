@@ -1,0 +1,4 @@
+# Created at 2021-10-16T18:13:33.261
+Boot Manifest-JAR contains absolute paths in classpath 'D:\cucumberLatest\WhatsappAutomation\automationwha\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+

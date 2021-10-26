@@ -17,7 +17,6 @@ Feature: Testing AnnaHelpline
         Given Access WebDriverManager
         Then Launch chrome "<Live>" browser
         Then get the "<Count>" groupname for whatsappweb
-        Then get contact info for whatsappweb
 
 
 
@@ -25,7 +24,7 @@ Feature: Testing AnnaHelpline
             | Website  | Stage                  | Live     | Count |
             | whatsapp | Stage.url.annaHelpLine | Live.url | 7     |
 
-             @getcontactinfo
+    @getcontactinfo
     Scenario Outline:  Whatsapp Web
         Given Access WebDriverManager
         Then Launch chrome "<Live>" browser

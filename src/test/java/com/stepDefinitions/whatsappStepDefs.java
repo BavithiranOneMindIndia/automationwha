@@ -49,22 +49,25 @@ public class whatsappStepDefs extends mainPageForWhatsappGetGroups {
     // clickmenubutton(driver);
     // }
 
-    
-
     // @Then("^get the groupname for whatsappweb$")
-    //  public void get_the_groupname() throws IOException, InterruptedException, AWTException {
-    //      getgroupname(driver);
-    //  }
+    // public void get_the_groupname() throws IOException, InterruptedException,
+    // AWTException {
+    // getgroupname(driver);
+    // }
 
     // @Then("^get contact info for whatsappweb$")
-    // public void get_contact_info() throws IOException, InterruptedException, AWTException {
-    //     getgroupname(driver);
+    // public void get_contact_info() throws IOException, InterruptedException,
+    // AWTException {
+    // getgroupname(driver);
 
-        @Then("^get the \"([^\"]*)\" groupname for whatsappweb$")
-    public void get_the_groupname(int count) throws IOException,
-    InterruptedException, AWTException {
-    getgroupname(driver,count);
+    // @Then("^change output to text file$")
+    // public void change_output_to_text_file() throws IOException {
+    // dinesh(driver);
+    // }
+
+    @Then("^get the \"([^\"]*)\" groupname for whatsappweb$")
+    public void get_the_groupname(int count) throws IOException, InterruptedException, AWTException {
+        getgroupname(driver, count);
     }
 
-    
 }

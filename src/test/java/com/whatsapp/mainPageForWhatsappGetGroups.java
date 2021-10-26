@@ -2,7 +2,10 @@ package com.whatsapp;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.awt.event.KeyEvent;
 
 import org.openqa.selenium.Keys;
@@ -15,6 +18,7 @@ import scala.collection.GenTraversable;
 
 public class mainPageForWhatsappGetGroups extends superClass {
 
+    String GroupNameinfor = "";
     // public void clickmenubutton(WebDriver driver) throws IOException {
     // getwaitdriver(driver).until(
     // ExpectedConditions.visibilityOfElementLocated(getValueFromElementAddressConfig("whatsapp.homemenu")));
@@ -36,6 +40,7 @@ public class mainPageForWhatsappGetGroups extends superClass {
         Thread.sleep(1000);
 
         for (int i = 0; i <= count; i++) {
+
             getRobotdriver().keyPress(KeyEvent.VK_DOWN);
 
             getwaitdriver(driver).until(ExpectedConditions
@@ -49,10 +54,30 @@ public class mainPageForWhatsappGetGroups extends superClass {
             Thread.sleep(1000);
             String typeInfo = driver.findElement(getValueFromElementAddressConfig("whatsapp.getinfo")).getText();
             // System.out.println(driver.findElement(getValueFromElementAddressConfig("whatsapp.getinfo")).getText());
-            System.out.println(ContactOrGroupName + " " + typeInfo);
+            String outputtext = ContactOrGroupName + "\t" + typeInfo + "\n";
+            System.out.println(outputtext);
             getRobotdriver().keyPress(KeyEvent.VK_ESCAPE);
             Thread.sleep(1000);
 
+            GroupNameinfor = GroupNameinfor.concat(outputtext);
+            System.out.println(GroupNameinfor);
+
+            // String output = "Contactinfor.txt";
+            // final boolean append = true, autoflush = true;
+            // PrintStream ps = new PrintStream(new FileOutputStream(output, append),
+            // autoflush);
+            // System.setOut(ps);
+
+        }
+
+        // System.out.println(GroupNameinfor);
+
+        try {
+            FileWriter fw = new FileWriter("C:\\GitProject\\Output.txt");
+            fw.write(GroupNameinfor);
+            fw.close();
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
     }

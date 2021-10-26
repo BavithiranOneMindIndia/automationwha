@@ -13,6 +13,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.XMLFormatter;
+import java.awt.AWTException;
+import java.awt.Robot;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,14 +29,25 @@ public class superClass {
     String returnValue;
     public Actions action;
     int randomInteger;
+    Robot robot;
 
     public WebDriverWait getwaitdriver(WebDriver driver) {
         if (wait == null) {
-            wait = new WebDriverWait(driver, 10);
+            wait = new WebDriverWait(driver, 30);
             return wait;
         } else {
             return wait;
         }
+    }
+
+    public Robot getRobotdriver() throws AWTException {
+        if (robot == null) {
+            robot = new Robot();
+            return robot;
+        } else {
+            return robot;
+        }
+
     }
 
     public Actions getActionDriver(WebDriver driver) {

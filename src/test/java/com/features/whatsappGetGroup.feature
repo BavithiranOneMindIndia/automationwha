@@ -28,7 +28,7 @@ Feature: Testing AnnaHelpline
 
         Examples:
             | Website  | Stage                  | Live     | Count1 |
-            | whatsapp | Stage.url.annaHelpLine | Live.url | 7      |
+            | whatsapp | Stage.url.annaHelpLine | Live.url | 2      |
 
     @getcontactinfo
     Scenario Outline:  Whatsapp Web

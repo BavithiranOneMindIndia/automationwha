@@ -7,10 +7,14 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+
+import java.io.File;
+
 import java.awt.event.KeyEvent;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.hssf.record.formula.functions.Column;
+import org.apache.poi.hssf.record.formula.functions.If;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -85,15 +89,18 @@ public class mainPageForWhatsappGetGroups extends superClass {
         Thread.sleep(1000);
 
         for (int i = 0; i <= count1; i++) {
-
+            
+            //Down key action
             getRobotdriver().keyPress(KeyEvent.VK_DOWN);
-
+            
+            //Fetching whatsapp contact name
             getwaitdriver(driver).until(ExpectedConditions
                     .visibilityOfElementLocated(getValueFromElementAddressConfig("whatsapp.getGroupName")));
             Thread.sleep(1000);
             ContactOrGroupName = driver.findElement(getValueFromElementAddressConfig("whatsapp.getGroupName"))
                     .getAttribute("title");
-
+            
+            //Getting contact info from Menu
             driver.findElement(getValueFromElementAddressConfig("whatsapp.clickmenu")).click();
             Thread.sleep(1000);
             typeInfo = driver.findElement(getValueFromElementAddressConfig("whatsapp.getinfo")).getText();
@@ -103,31 +110,34 @@ public class mainPageForWhatsappGetGroups extends superClass {
             Thread.sleep(1000);
 
             try {
-                // saving o/p in already created excel file
-                FileInputStream fis = new FileInputStream("C:\\GitProject\\Testdata.xlsx");
-                XSSFWorkbook workbook = new XSSFWorkbook(fis);
-                XSSFSheet sheet = workbook.getSheet("Din");
 
-                // //saving o/p in new excel file by creating using code
-                // FileInputStream fis = new FileInputStream("C:\\GitProject");
-                // XSSFWorkbook workbook = new XSSFWorkbook(fis);
-                // XSSFSheet sheet = workbook.createSheet("black");
+                //checking file exist in location
+                File file = new File("C:\\GitProject\\Testdata.xlsx");
+                if (file.exists()) {
+                    
+                    //Saving the output in the given location
+                    FileInputStream fis = new FileInputStream("C:\\GitProject\\Testdata.xlsx");
+                    XSSFWorkbook workbook = new XSSFWorkbook(fis);
+                    XSSFSheet sheet = workbook.getSheet("Din");
 
-                Row row = sheet.createRow(i);
-                Cell cell = row.createCell(0);
-                Cell cell1 = row.createCell(1);
+                    Row row = sheet.createRow(i);
+                    Cell cell = row.createCell(0);
+                    Cell cell1 = row.createCell(1);
 
-                cell.setCellType(cell.CELL_TYPE_STRING);
-                cell.setCellValue(ContactOrGroupName);
-                cell1.setCellValue(typeInfo);
+                    cell.setCellType(cell.CELL_TYPE_STRING);
+                    cell.setCellValue(ContactOrGroupName);
+                    cell1.setCellValue(typeInfo);
 
-                sheet.autoSizeColumn(0);
-                sheet.autoSizeColumn(1);
+                    //Column auto size
+                    sheet.autoSizeColumn(0);
+                    sheet.autoSizeColumn(1);
 
-                FileOutputStream fos = new FileOutputStream("C:\\GitProject\\Testdata.xlsx");
-                workbook.write(fos);
-                
-                fos.close();
+                    FileOutputStream fos = new FileOutputStream("C:\\GitProject\\Testdata.xlsx");
+                    workbook.write(fos);
+                    fos.close();
+                } else {
+                    System.out.println("file not exist");
+                }
             } catch (Exception e) {
                 System.out.println(e);
             }

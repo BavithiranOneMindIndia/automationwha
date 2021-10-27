@@ -1,5 +1,6 @@
 package com.whatsapp;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,12 +17,15 @@ import java.util.logging.XMLFormatter;
 import java.awt.AWTException;
 import java.awt.Robot;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import scala.sys.process.ProcessBuilderImpl.FileInput;
 
 public class superClass {
 
@@ -30,6 +34,7 @@ public class superClass {
     public Actions action;
     int randomInteger;
     Robot robot;
+    FileInputStream fis;
 
     public WebDriverWait getwaitdriver(WebDriver driver) {
         if (wait == null) {
@@ -59,6 +64,8 @@ public class superClass {
         }
 
     }
+
+    
 
     public String getValueFromDataConfig(String value) throws IOException {
 

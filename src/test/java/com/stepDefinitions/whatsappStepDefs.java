@@ -65,9 +65,13 @@ public class whatsappStepDefs extends mainPageForWhatsappGetGroups {
     // dinesh(driver);
     // }
 
-    @Then("^get the \"([^\"]*)\" groupname for whatsappweb$")
-    public void get_the_groupname(int count) throws IOException, InterruptedException, AWTException {
-        getgroupname(driver, count);
-    }
+    // @Then("^get the \"([^\"]*)\" groupname for whatsappweb$")
+    // public void get_the_groupname(int count) throws IOException, InterruptedException, AWTException {
+    //     getgroupname(driver, count);
+    //}
 
+    @Then("^enter result \"([^\"]*)\" in excel$")
+    public void enter_result_in_excel(int count1) throws IOException, InterruptedException, AWTException{
+        resultinexcel(driver, count1);
+    }
 }
